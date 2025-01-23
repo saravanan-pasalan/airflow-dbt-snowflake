@@ -2,7 +2,6 @@
 The repo provides the steps for initial setup of airflow and to run the dbt-snowflake job via airflow scheduler
 
 
-Sure! Here’s the entire content formatted as a single `README.md` file:
 
 ```markdown
 # airflow-dbt-snowflake
