@@ -1,0 +1,26 @@
+[2025-01-22T07:31:43.469+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-01-22T07:31:43.477+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: first_dag.Hello_world manual__2025-01-22T07:31:03.303038+00:00 [queued]>
+[2025-01-22T07:31:43.482+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: first_dag.Hello_world manual__2025-01-22T07:31:03.303038+00:00 [queued]>
+[2025-01-22T07:31:43.484+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2025-01-22T07:31:43.506+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): Hello_world> on 2025-01-22 07:31:03.303038+00:00
+[2025-01-22T07:31:43.510+0000] {standard_task_runner.py:72} INFO - Started process 18721 to run task
+[2025-01-22T07:31:43.512+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'first_dag', 'Hello_world', 'manual__2025-01-22T07:31:03.303038+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/hello_world.py', '--cfg-path', '/tmp/tmpz8y0oyqn']
+[2025-01-22T07:31:43.514+0000] {standard_task_runner.py:105} INFO - Job 5: Subtask Hello_world
+[2025-01-22T07:31:43.569+0000] {task_command.py:467} INFO - Running <TaskInstance: first_dag.Hello_world manual__2025-01-22T07:31:03.303038+00:00 [running]> on host LAPTOP-3U4JI4R2.
+[2025-01-22T07:31:43.653+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='first_dag' AIRFLOW_CTX_TASK_ID='Hello_world' AIRFLOW_CTX_EXECUTION_DATE='2025-01-22T07:31:03.303038+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-01-22T07:31:03.303038+00:00'
+[2025-01-22T07:31:43.656+0000] {logging_mixin.py:190} INFO - Task instance is in running state
+[2025-01-22T07:31:43.657+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2025-01-22T07:31:43.658+0000] {logging_mixin.py:190} INFO - Current task name:Hello_world state:running start_date:2025-01-22 07:31:43.478775+00:00
+[2025-01-22T07:31:43.660+0000] {logging_mixin.py:190} INFO - Dag name:first_dag and current dag run status:running
+[2025-01-22T07:31:43.661+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-01-22T07:31:43.663+0000] {logging_mixin.py:190} INFO - Hello world
+[2025-01-22T07:31:43.664+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-01-22T07:31:43.668+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-01-22T07:31:43.669+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=first_dag, task_id=Hello_world, run_id=manual__2025-01-22T07:31:03.303038+00:00, execution_date=20250122T073103, start_date=20250122T073143, end_date=20250122T073143
+[2025-01-22T07:31:43.690+0000] {logging_mixin.py:190} INFO - Task instance in success state
+[2025-01-22T07:31:43.691+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: running
+[2025-01-22T07:31:43.693+0000] {logging_mixin.py:190} INFO - Dag name:first_dag queued_at:2025-01-22 07:31:03.397013+00:00
+[2025-01-22T07:31:43.694+0000] {logging_mixin.py:190} INFO - Task hostname:LAPTOP-3U4JI4R2. operator:PythonOperator
+[2025-01-22T07:31:43.731+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-01-22T07:31:43.741+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-01-22T07:31:43.742+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

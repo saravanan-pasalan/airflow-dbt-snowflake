@@ -1,0 +1,95 @@
+[2025-01-22T08:46:41.836+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-01-22T08:46:41.845+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_snowflake_job2.dbt_tasks.dbt-debug manual__2025-01-22T08:30:13.938951+00:00 [queued]>
+[2025-01-22T08:46:41.850+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_snowflake_job2.dbt_tasks.dbt-debug manual__2025-01-22T08:30:13.938951+00:00 [queued]>
+[2025-01-22T08:46:41.852+0000] {taskinstance.py:2866} INFO - Starting attempt 4 of 4
+[2025-01-22T08:46:41.874+0000] {taskinstance.py:2889} INFO - Executing <Task(BashOperator): dbt_tasks.dbt-debug> on 2025-01-22 08:30:13.938951+00:00
+[2025-01-22T08:46:41.878+0000] {standard_task_runner.py:72} INFO - Started process 37486 to run task
+[2025-01-22T08:46:41.880+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'dbt_snowflake_job2', 'dbt_tasks.dbt-debug', 'manual__2025-01-22T08:30:13.938951+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/dbt_snowflake.py', '--cfg-path', '/tmp/tmpu1axowr_']
+[2025-01-22T08:46:41.882+0000] {standard_task_runner.py:105} INFO - Job 16: Subtask dbt_tasks.dbt-debug
+[2025-01-22T08:46:41.940+0000] {task_command.py:467} INFO - Running <TaskInstance: dbt_snowflake_job2.dbt_tasks.dbt-debug manual__2025-01-22T08:30:13.938951+00:00 [running]> on host LAPTOP-3U4JI4R2.
+[2025-01-22T08:46:42.004+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='dbt_snowflake_job2' AIRFLOW_CTX_TASK_ID='dbt_tasks.dbt-debug' AIRFLOW_CTX_EXECUTION_DATE='2025-01-22T08:30:13.938951+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-01-22T08:30:13.938951+00:00'
+[2025-01-22T08:46:42.006+0000] {logging_mixin.py:190} INFO - Task instance is in running state
+[2025-01-22T08:46:42.008+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2025-01-22T08:46:42.009+0000] {logging_mixin.py:190} INFO - Current task name:dbt_tasks.dbt-debug state:running start_date:2025-01-22 08:46:41.846892+00:00
+[2025-01-22T08:46:42.010+0000] {logging_mixin.py:190} INFO - Dag name:dbt_snowflake_job2 and current dag run status:running
+[2025-01-22T08:46:42.012+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-01-22T08:46:42.015+0000] {subprocess.py:78} INFO - Tmp dir root location: /tmp
+[2025-01-22T08:46:42.016+0000] {subprocess.py:88} INFO - Running command: ['/usr/bin/bash', '-c', 'dbt debug --profiles-dir /mnt/c/Users/psara/.dbt --project-dir /mnt/c/Users/psara/shrovandbtsnowflake']
+[2025-01-22T08:46:42.022+0000] {subprocess.py:99} INFO - Output:
+[2025-01-22T08:46:42.072+0000] {subprocess.py:106} INFO - /usr/bin/bash: line 1: dbt: command not found
+[2025-01-22T08:46:42.072+0000] {subprocess.py:110} INFO - Command exited with return code 127
+[2025-01-22T08:46:42.079+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/operators/bash.py", line 276, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 127.
+[2025-01-22T08:46:42.103+0000] {logging_mixin.py:190} INFO - Task instance in failure state
+[2025-01-22T08:46:42.104+0000] {logging_mixin.py:190} INFO - Task start:2025-01-22 08:46:41.846892+00:00 end:2025-01-22 08:46:42.102682+00:00 duration:0.25579
+[2025-01-22T08:46:42.105+0000] {logging_mixin.py:190} INFO - Task:<Task(BashOperator): dbt_tasks.dbt-debug> dag:<DAG: dbt_snowflake_job2> dagrun:<DagRun dbt_snowflake_job2 @ 2025-01-22 08:30:13.938951+00:00: manual__2025-01-22T08:30:13.938951+00:00, state:running, queued_at: 2025-01-22 08:30:13.968495+00:00. externally triggered: True>
+[2025-01-22T08:46:42.106+0000] {logging_mixin.py:190} INFO - Failure caused by Bash command failed. The command returned a non-zero exit code 127.
+[2025-01-22T08:46:42.107+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=dbt_snowflake_job2, task_id=dbt_tasks.dbt-debug, run_id=manual__2025-01-22T08:30:13.938951+00:00, execution_date=20250122T083013, start_date=20250122T084641, end_date=20250122T084642
+[2025-01-22T08:46:42.134+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-01-22T08:46:42.136+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 16 for task dbt_tasks.dbt-debug (Bash command failed. The command returned a non-zero exit code 127.; 37486)
+Traceback (most recent call last):
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/airflow/operators/bash.py", line 276, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 127.
+[2025-01-22T08:46:42.181+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-01-22T08:46:42.214+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-01-22T08:46:42.228+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
