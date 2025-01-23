@@ -1,159 +1,167 @@
 # airflow-dbt-snowflake
 The repo provides the steps for initial setup of airflow and to run the dbt-snowflake job via airflow scheduler
 
-AirFlow-DBT-Snowflake Integration in Local Machine(Windows)
 
-Step1:
+Sure! Here’s the entire content formatted as a single `README.md` file:
 
-Installation in Windows using docker or WSL:
+```markdown
+# airflow-dbt-snowflake
 
-Installing WSL Windows
+This repository provides the steps for the initial setup of Apache Airflow and to run the DBT-Snowflake job via the Airflow scheduler.
 
+## AirFlow-DBT-Snowflake Integration on a Local Machine (Windows)
+
+### Step 1: Install WSL on Windows
+
+Open your command prompt and run:
+
+```bash
 C:\Users\psara>wsl --install
+```
 
+### Step 2: Launch Ubuntu
 
+Once WSL is installed, launch Ubuntu and follow the prompts to create a default UNIX user account.
 
-
-
-
-
-
-
-
-Step2:-
-
-Ubuntu is already installed.
-Launching Ubuntu...
-Installing, this may take a few minutes...
-Please create a default UNIX user account. The username does not need to match your Windows username.
-For more information visit: https://aka.ms/wslusers
+```bash
+Please create a default UNIX user account.
 Enter new UNIX username: shrovan
 New password:
 Retype new password:
 passwd: password updated successfully
-Installation successful!
+```
 
+### Step 3: Update Linux
 
-Step3: Update linux
-
+```bash
 shrovan@LAPTOP-3U4JI4R2:/mnt/c/Users/psara$ sudo apt update
+```
 
+### Step 4: Install Python and Pip
 
-Step4: Install python and pip for creating virtual environment
+Install Python and pip for creating a virtual environment:
 
+```bash
 shrovan@LAPTOP-3U4JI4R2:/mnt/c/Users/psara$ sudo apt install python3 python3-pip
+```
 
+### Step 5: Install Venv and Create a Python Virtual Environment
 
-Step5: Install venv package and Create a python virtual environment
+Install the venv package and create a virtual environment:
 
+```bash
 shrovan@LAPTOP-3U4JI4R2:/mnt/c/Users/psara$ sudo apt-get install python3-venv
-
-
 shrovan@LAPTOP-3U4JI4R2:~$ mkdir airflow_project
 shrovan@LAPTOP-3U4JI4R2:~$ cd airflow_project/
-
-	
-
 shrovan@LAPTOP-3U4JI4R2:/mnt/c/Users/psara/shrovandbtairflow$ python3 -m venv airflow_venv
 shrovan@LAPTOP-3U4JI4R2:/mnt/c/Users/psara/shrovandbtairflow$ source airflow_venv/bin/activate
-(airflow_venv) shrovan@LAPTOP-3U4JI4R2:/mnt/c/Users/psara/shrovandbtairflow$
+```
 
+### Step 6: Install Apache Airflow in the Virtual Environment
 
+Set the Airflow version and install:
 
-Step6: Install apache airflow in the virtual environemnt
-
+```bash
 (airflow_venv) shrovan@LAPTOP-3U4JI4R2:
 AIRFLOW_VERSION=2.10.1
 PYTHON_VERSION="$(python --version | cut -d " " -f 2 | cut -d "." -f 1-2)"
 CONTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt"
 
 pip install "apache-airflow==${AIRFLOW_VERSION}" --constraint "${CONTRAINT_URL}"
+```
 
+### Step 7: Set Airflow Home and Initialize the Database
 
-
-
-Step7:SET airflow home page and Initialise the airflow database
-
+```bash
 (airflow_venv) shrovan@LAPTOP-3U4JI4R2:/mnt/c/Users/psara/shrovandbtairflow$ export AIRFLOW_HOME=~/airflow
-
-
 (airflow_venv) shrovan@LAPTOP-3U4JI4R2:/mnt/c/Users/psara/shrovandbtairflow$ airflow db init
+```
 
+### Step 8: Start the Web Server
 
-
-Step8: Start the webserver
-
+```bash
 (airflow_venv) shrovan@LAPTOP-3U4JI4R2:/mnt/c/Users/psara/shrovandbtairflow$ airflow webserver --port 8080
+```
 
+### Step 9: Start the Scheduler
 
-Step9: Start the scheduler in a new instance:
+In a new terminal, activate the virtual environment and start the scheduler:
 
+```bash
 shrovan@LAPTOP-3U4JI4R2:/mnt/c/Users/psara$ cd shrovandbtairflow/
 shrovan@LAPTOP-3U4JI4R2:/mnt/c/Users/psara/shrovandbtairflow$ source airflow_venv/bin/activate
 (airflow_venv) shrovan@LAPTOP-3U4JI4R2:/mnt/c/Users/psara/shrovandbtairflow$ airflow scheduler
+```
 
+### Step 10: List Current Users
 
-Step10:
-In a new instance list the user details currently in use for airflow
+In a new terminal, list the users:
+
+```bash
 (airflow_venv) shrovan@LAPTOP-3U4JI4R2:/mnt/c/Users/psara/shrovandbtairflow$ airflow users list
-No data found
+```
 
+### Step 11: Create a New User with Admin Role
 
-Step11: Create a new user with Admin role, and set a username and password for the same.
+Create an admin user:
 
+```bash
 (airflow_venv) shrovan@LAPTOP-3U4JI4R2:/mnt/c/Users/psara/shrovandbtairflow$ airflow users create --username admin --firstname shrovan --lastname p --role Admin --email admin@anyname.com
-/mnt/c/Users/psara/shrovandbtairflow/airflow_venv/lib/python3.12/site-packages/flask_limiter/extension.py:333 UserWarning: Using the in-memory storage for tracking rate limits as no storage was explicitly specified. This is not recommended for production use. See: https://flask-limiter.readthedocs.io#configuring-a-storage-backend for documentation about configuring the storage backend.
-[2025-01-22T06:27:07.929+0000] {override.py:965} WARNING - No user yet created, use flask fab command to do it.
-[2025-01-22T06:27:08.553+0000] {workday.py:41} WARNING - Could not import pandas. Holidays will not be considered.
-Password:
-Repeat for confirmation:
-[2025-01-22T06:27:37.482+0000] {override.py:1597} INFO - Added user admin
-User "admin" created with role "Admin"
+```
 
+### Step 12: Check User Information
 
-Step12:
-Check the user information for airflow:
+Verify the user details:
 
-
+```bash
 (airflow_venv) shrovan@LAPTOP-3U4JI4R2:/mnt/c/Users/psara/shrovandbtairflow$ airflow users list
-id | username | email             | first_name | last_name | roles
-===+==========+===================+============+===========+======
-1  | admin    | admin@anyname.com | shrovan    | p         | Admin
+```
 
+### Step 13: Create a DAG Folder
 
+Open the Airflow installation folder in VSCode and create a `dags` folder. Add a new Python script in this folder and activate the virtual environment.
 
-Step13:
-
-Open the airflow folder where the airflow is installed via vscode and under that folder create a dags folder.
-
-Add a new python script under the DAG, initiate the virtual environment 
-
+```bash
 (airflow_venv) shrovan@LAPTOP-3U4JI4R2:/mnt/c/Users/psara/shrovandbtairflow$ source /mnt/c/Users/psara/shrovandbtairflow/airflow_venv/bin/activate
+```
 
+### Step 14: Run the Python Script
 
+Execute your DAG script:
 
-Step14: Run the Python script
-
+```bash
 (airflow_venv) shrovan@LAPTOP-3U4JI4R2:~/airflow/dags$ python3 hello_world.py
-/home/shrovan/airflow/dags/hello_world.py:8 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+```
 
+### Step 15: Create a `requirements.txt`
 
+Create a `requirements.txt` file for the required packages:
 
-
-
-Step15:- Create a requirement.txt folder to install the required packages
-
-
+```bash
 (airflow_venv) shrovan@LAPTOP-3U4JI4R2:~/airflow$ cat requirements.txt 
 apache-airflow
 dbt-core
-dbt-snowflake(airflow_venv) shrovan@LAPTOP-3U4JI4R2:~/airflow$ 
+dbt-snowflake
+```
 
+### Step 16: Install Requirements
 
+Run the requirements file:
 
-Step16:- Run the requirement.txt folder
-
+```bash
 (airflow_venv) shrovan@LAPTOP-3U4JI4R2:~/airflow$ pip install -r requirements.txt 
+```
+
+### Step 17: Create a Python Script for DBT Model
+
+Create a Python script to run a DBT model from Airflow.
+
+### Step 18: Execute the Script
+
+Run your script and check the task in Airflow.
+```
+
+You can copy this content into a file named `README.md` in your repository. Let me know if you need any more help!
 
 Step17:- Create a Python script to run a DBT Model from Airflow.
 
